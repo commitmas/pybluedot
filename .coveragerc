@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = pybluedot
+omit = pybluedot/tests/*
+
+[report]
+ignore-errors = True
