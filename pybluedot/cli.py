@@ -3,5 +3,5 @@ cli.py constructs a cli interface of commands, options, and subcommands in argpa
 """
 import argparse
 import json
-from commands import cmd, subcmd 
+from pybluedot.commands import cmd, subcmd 
 
