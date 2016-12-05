@@ -28,7 +28,7 @@ sub_cmd = [
                     name: "--display",
                     action: "store_const"
                 }
-            ],
+        ],
         function: "init"
     },
     {
