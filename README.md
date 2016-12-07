@@ -7,6 +7,7 @@ The Python team project for Commitmas 2016
 
 In this year's Commitmas, the Python team will work on a project that makes use of [NASA's APIs](https://api.nasa.gov).
 
+
 "pybluedot" is a Python library/command-line utility that allows for easy display of NASA data
 
 ## Instructions
@@ -23,3 +24,6 @@ There are several components that we'll need to create for this project. If you 
 - [Command-line parsing](https://github.com/commitmas/pybluedot/issues/3)
 - API bindings (actual functions that represent API endpoints)
 - [Unit tests for everything](https://github.com/commitmas/pybluedot/issues/4) (this can be something you take on across all components, or each component developer can write their own tests)
+
+## Useful References
+- [nasa-api](https://github.com/brendanv/nasa-api) - A useful wrapper tool to interact with NASA Data APIs
