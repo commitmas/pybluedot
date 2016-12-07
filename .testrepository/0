@@ -1,0 +1,7 @@
+time: 2016-12-07 03:51:46.352070Z
+tags: worker-0
+test: pybluedot.tests.unit.test_sample.test_sample_foo.runTest
+time: 2016-12-07 03:51:46.352374Z
+successful: pybluedot.tests.unit.test_sample.test_sample_foo.runTest [ multipart
+]
+tags: -worker-0
