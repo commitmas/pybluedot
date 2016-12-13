@@ -5,6 +5,17 @@ import json
 
 class Patent(object):
 
+    """A API to search NASA's patent repository.
+
+    Args:
+        query (str, required): Search text to filter results.
+        api_key (str, required): api.nasa.gov key for expanded usage.
+            Default is DEMO_KEY in config.py.
+        concept_tags (str, optional): Return an ordered dict of concepts from
+            the patent abstract. Default is False.
+        limit (int, optional): Number of patents to return. Default is None.
+
+    """
     def __init__(self, query, api_key = config.API_KEY, concept_tags = False,
                  limit = None):
         self.query = query
@@ -14,6 +25,7 @@ class Patent(object):
 
 
     def get(self):
+        """Builds parameter dict that requests library will use for url query"""
         self.patent_params = { 'query' : self.query,
                                'api_key' : self.api_key,
                                'concept_tags' : self.concept_tags,
@@ -32,5 +44,3 @@ class Patent(object):
         if 'error' in body:
             raise Exception(body['error'])
         return body
-# Current default is to return out json, need to add ability for file output
-# which might be handled by here.
