@@ -1,4 +1,4 @@
-import config
+from pybluedot import config
 import requests
 import json
 
