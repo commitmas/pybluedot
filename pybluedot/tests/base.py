@@ -1,4 +1,5 @@
 import unittest
+import mock
 
 
 class DietTestCase(unittest.TestCase):
