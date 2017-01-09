@@ -53,5 +53,5 @@ class PatentTestSuite(base.DietTestCase):
         mock_body = {'error': 'there is something wrong'}
         mock_response.json.return_value = mock_body
         mock_get.return_value = mock_response
-        with self.assertRaises(Exception):
+        with self.assertRaises(ValueError):
             self.testpatent.get()

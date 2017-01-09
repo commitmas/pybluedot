@@ -55,5 +55,5 @@ class Patent(object):
         body = response.json()
 
         if 'error' in body:
-            raise Exception(body['error'])
+            raise ValueError(body['error'])
         return body
