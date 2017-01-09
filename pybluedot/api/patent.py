@@ -14,6 +14,7 @@
 
 from pybluedot import config
 import requests
+from requests.exceptions import HTTPError
 
 
 class Patent(object):
@@ -48,8 +49,8 @@ class Patent(object):
         try:
             response.raise_for_status()
 
-        except requests.exceptions.HTTPError as e:
-            return "Error: " + str(e)
+        except HTTPError as e:
+            raise HTTPError(str(e))
 
         body = response.json()
 

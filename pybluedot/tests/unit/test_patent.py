@@ -15,7 +15,6 @@
 import mock
 from pybluedot.api import patent
 from pybluedot.tests import base
-import requests
 from requests.exceptions import HTTPError
 
 
@@ -31,7 +30,7 @@ class PatentTestSuite(base.DietTestCase):
 
     @mock.patch('pybluedot.api.patent.requests.get', autospec=True)
     def test_get_response_ok(self, mock_get):
-        mock_response = mock.Mock()
+        mock_response = mock.MagicMock()
         expected_dict = {'key': 'value'}
         mock_response.json.return_value = expected_dict
         mock_get.return_value = mock_response
@@ -40,10 +39,19 @@ class PatentTestSuite(base.DietTestCase):
         self.assertEqual(response_dict, expected_dict)
 
     @mock.patch('pybluedot.api.patent.requests.get', autospec=True)
-    def test_get_response_fail(self, mock_get):
-        mock_response = mock.Mock()
-        mock_response.status_code = 500
+    def test_get_response_raises_HTTPError(self, mock_get):
+        mock_response = mock.MagicMock()
+        mock_response.status_code.return_value = 500
         mock_response.raise_for_status.side_effect = HTTPError('NASA API DOWN')
         mock_get.return_value = mock_response
-        response = self.testpatent.get()
-        self.assertEqual(1, mock_response.raise_for_status.call_count)
+        with self.assertRaises(HTTPError):
+            self.testpatent.get()
+
+    @mock.patch('pybluedot.api.patent.requests.get', autospec=True)
+    def test_get_response_error_in_body(self, mock_get):
+        mock_response = mock.MagicMock()
+        mock_body = {'error': 'there is something wrong'}
+        mock_response.json.return_value = mock_body
+        mock_get.return_value = mock_response
+        with self.assertRaises(Exception):
+            self.testpatent.get()
