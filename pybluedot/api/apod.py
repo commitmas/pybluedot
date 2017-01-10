@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from datetime import date
 from pybluedot import config
 import requests
 from requests.exceptions import HTTPError
+
 
 class Apod(object):
     """A API to return NASA's astronomy picture of the day.
