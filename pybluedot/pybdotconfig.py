@@ -8,8 +8,8 @@ def create_config(path):
     config = configparser.ConfigParser()
     config.add_section('Global')
     config.set('Global', 'API_KEY', input('Enter your NASA API Key:'))
-    config.add_section('Patent')
-    config.set('Patent', 'URL', 'https://api.nasa.gov/patents/content')
+    config.add_section('PATENT')
+    config.set('PATENT', 'URL', 'https://api.nasa.gov/patents/content')
     config.add_section('APOD')
     config.set('APOD', 'URL', 'https://api.nasa.gov/planetary/apod')
     config.add_section('NEO')
@@ -39,11 +39,15 @@ def get_config(path):
     if not os.path.exists(path):
         create_config(path)
     config = configparser.ConfigParser()
-    config.read(path)
     return config
 
+def init_config():
+    path = 'pybdot.ini'
+    config = get_config(path)
+    return config
+
+
 if __name__ == '__main__':
-    path = 'pybluedotconf.py'
-    get_config(path)
+    init_config()
 
 
